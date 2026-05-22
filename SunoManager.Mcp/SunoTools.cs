@@ -145,6 +145,7 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
         var progress = new Progress<string>(m => messages.Add(m));
         var result = await downloader.SyncPlaylistAsync(playlist, progress);
 
+        await downloader.WriteMasterPlaylistAsync(progress);
         messages.Add($"Done -- {result.Downloaded} downloaded, {result.Skipped} skipped, {result.Failed} failed");
         return string.Join("\n", messages);
     }
@@ -168,6 +169,8 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
             var result = await downloader.SyncPlaylistAsync(playlist, progress);
             lines.Add($"  => {result.Downloaded} downloaded, {result.Skipped} skipped, {result.Failed} failed");
         }
+
+        await downloader.WriteMasterPlaylistAsync(new Progress<string>(m => lines.Add(m)));
         return string.Join("\n", lines);
     }
 

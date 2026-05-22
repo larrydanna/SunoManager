@@ -26,14 +26,15 @@ public class ManifestService(SunoConfig config)
         manifest.Songs.ContainsKey(clipId);
 
     public void Record(DownloadManifest manifest, string clipId, string title,
-        string playlistName, string relativePath)
+        string playlistName, string relativePath, double? durationSeconds = null)
     {
         manifest.Songs[clipId] = new ManifestEntry
         {
             Title = title,
             Playlist = playlistName,
             RelativePath = relativePath,
-            DownloadedAt = DateTimeOffset.UtcNow
+            DownloadedAt = DateTimeOffset.UtcNow,
+            DurationSeconds = durationSeconds
         };
     }
 }

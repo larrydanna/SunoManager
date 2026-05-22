@@ -24,4 +24,7 @@ public class ManifestEntry
 
     [JsonPropertyName("downloadedAt")]
     public DateTimeOffset DownloadedAt { get; set; }
+
+    [JsonPropertyName("durationSeconds")]
+    public double? DurationSeconds { get; set; }
 }

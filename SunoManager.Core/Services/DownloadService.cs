@@ -68,7 +68,7 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
                 EmbedTags(filePath, song, playlist.Name, trackNo, artBytes, progress);
 
                 var relPath = Path.GetRelativePath(config.LibraryPath, filePath);
-                manifest.Record(man, song.Id, song.Title, playlist.Name, relPath);
+                manifest.Record(man, song.Id, song.Title, playlist.Name, relPath, song.DurationSeconds);
                 await manifest.SaveAsync(man);
 
                 ordered.Add((song, filePath));
@@ -161,6 +161,30 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
         {
             progress?.Report($"  (tag embed failed for {song.Title}: {ex.Message})");
         }
+    }
+
+    // Generates (or regenerates) a master .m3u8 in the library root that lists
+    // every downloaded song, sorted by playlist then title.
+    public async Task WriteMasterPlaylistAsync(IProgress<string>? progress = null)
+    {
+        var man = await manifest.LoadAsync();
+        if (man.Songs.Count == 0) return;
+
+        var artist = string.IsNullOrWhiteSpace(config.Artist) ? "Suno" : config.Artist;
+        var sb = new StringBuilder();
+        sb.AppendLine("#EXTM3U");
+
+        foreach (var entry in man.Songs.Values.OrderBy(e => e.Playlist).ThenBy(e => e.Title))
+        {
+            var secs = (int)Math.Round(entry.DurationSeconds ?? 0);
+            sb.AppendLine($"#EXTINF:{secs},{artist} - {entry.Title}");
+            // Path relative to library root, forward slashes for portability.
+            sb.AppendLine(entry.RelativePath.Replace('\\', '/'));
+        }
+
+        var m3uPath = Path.Combine(config.LibraryPath, "All Songs.m3u8");
+        await File.WriteAllTextAsync(m3uPath, sb.ToString(), new UTF8Encoding(false));
+        progress?.Report($"Master playlist: {Path.GetFileName(m3uPath)} ({man.Songs.Count} tracks)");
     }
 
     // Generates a .m3u8 listing every song in the playlist, in playlist order.
