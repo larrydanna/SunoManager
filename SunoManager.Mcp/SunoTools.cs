@@ -11,6 +11,26 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
     ManifestService manifestService, ExportService exporter, SunoConfig config)
 {
     private static readonly JsonSerializerOptions Pretty = new() { WriteIndented = true };
+    private string? EnsureActiveToken()
+    {
+        if (!config.IsTokenExpired()) return null;
+
+        var stored = TokenStore.TryRead();
+        if (string.IsNullOrWhiteSpace(stored))
+            return $"Authentication token unavailable. No stored token found at {TokenStore.FilePath}.";
+
+        stored = stored.Trim();
+        var (valid, _, error) = TokenStore.Validate(stored);
+        if (!valid)
+            return $"Authentication token unavailable: stored token is invalid ({error}).";
+
+        var normalized = stored.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase)
+            ? stored : "Bearer " + stored;
+
+        config.AuthToken = normalized;
+        TokenStore.Save(normalized);
+        return null;
+    }
 
     [McpServerTool, Description("Activate a fresh Suno auth token for this running server -- no restart needed. Preferred usage: run 'suno token' in a terminal (it writes the shared token.json), then call this with NO argument to reload it from disk. You may also pass the full 'Bearer eyJ...' value directly, but reloading from disk avoids copying a long secret through the model, which can corrupt it.")]
     public string set_token(
@@ -22,8 +42,7 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
         {
             token = TokenStore.TryRead();
             if (string.IsNullOrWhiteSpace(token))
-                return $"No token supplied and none found at {TokenStore.FilePath}. "
-                     + "Run 'suno token' in a terminal first, then call set_token again.";
+                return $"No token supplied and no stored token found at {TokenStore.FilePath}.";
         }
 
         token = token!.Trim();
@@ -46,8 +65,8 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
     [McpServerTool, Description("List all Suno playlists with name, ID, and song count.")]
     public async Task<string> list_playlists()
     {
-        if (config.IsTokenExpired())
-            return "Token expired. Use the set_token tool with a fresh token from suno.com.";
+        var tokenError = EnsureActiveToken();
+        if (tokenError is not null) return tokenError;
 
         var playlists = await api.GetAllPlaylistsAsync();
         var summary = playlists.Select(p => new
@@ -102,8 +121,8 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
     public async Task<string> sync_playlist(
         [Description("The exact playlist name to sync")] string playlistName)
     {
-        if (config.IsTokenExpired())
-            return "Token expired. Use the set_token tool with a fresh token from suno.com.";
+        var tokenError = EnsureActiveToken();
+        if (tokenError is not null) return tokenError;
 
         var summaries = await api.GetAllPlaylistsAsync();
         var summary = summaries.FirstOrDefault(p =>
@@ -126,8 +145,8 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
     [McpServerTool, Description("Sync all Suno playlists. Downloads only songs not already in the library.")]
     public async Task<string> sync_all()
     {
-        if (config.IsTokenExpired())
-            return "Token expired. Use the set_token tool with a fresh token from suno.com.";
+        var tokenError = EnsureActiveToken();
+        if (tokenError is not null) return tokenError;
 
         var summaries = await api.GetAllPlaylistsAsync();
         if (summaries.Count == 0) return "No playlists found.";
