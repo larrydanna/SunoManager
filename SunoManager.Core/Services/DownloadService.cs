@@ -27,7 +27,7 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
         var ordered = new List<(Song song, string filePath)>();
         int trackNo = 0;
 
-        foreach (var entry in playlist.Clips)
+        foreach (var entry in playlist.Clips.OrderBy(c => c.Position))
         {
             if (entry.Clip is not { } song) continue;
             ct.ThrowIfCancellationRequested();
