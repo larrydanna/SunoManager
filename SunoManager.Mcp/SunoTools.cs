@@ -32,14 +32,17 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
         return null;
     }
 
-    [McpServerTool, Description("Activate a fresh Suno auth token for this running server -- no restart needed. Preferred usage: run 'suno token' in a terminal (it writes the shared token.json), then call this with NO argument to reload it from disk. You may also pass the full 'Bearer eyJ...' value directly, but reloading from disk avoids copying a long secret through the model, which can corrupt it.")]
+    [McpServerTool, Description("Activate a fresh Suno auth token for this running server -- no restart needed. Preferred usage: enable Suno:AllowCredentialCache, run 'suno token' in a terminal, then call this with NO argument to reload it from the protected local cache. You may also pass the full 'Bearer eyJ...' value directly.")]
     public string set_token(
-        [Description("Optional. The full 'Bearer eyJ...' value. If omitted, the token is reloaded from the shared token.json file written by 'suno token'.")]
+        [Description("Optional. The full 'Bearer eyJ...' value. If omitted, and credential cache is enabled, the token is reloaded from the local protected cache.")]
         string? token = null)
     {
         var fromDisk = string.IsNullOrWhiteSpace(token);
         if (fromDisk)
         {
+            if (!config.AllowCredentialCache)
+                return "Credential cache is disabled (Suno:AllowCredentialCache=false). "
+                     + "Pass a token directly or enable secure cache in appsettings.local.json.";
             token = TokenStore.TryRead();
             if (string.IsNullOrWhiteSpace(token))
                 return $"No token supplied and no stored token found at {TokenStore.FilePath}.";
@@ -54,12 +57,16 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
             ? token : "Bearer " + token;
 
         config.AuthToken = normalized;   // live singleton -- every service sees it immediately
-        TokenStore.Save(normalized);     // persist to token.json for the CLI and other hosts
+        if (config.AllowCredentialCache && TokenStore.IsSecureCacheAvailable())
+            TokenStore.Save(normalized); // persist to token.json for the CLI and other hosts
 
         var mins = (int)(expiry - DateTimeOffset.UtcNow).TotalMinutes;
         var src = fromDisk ? "reloaded from token.json" : "accepted";
+        var cacheState = config.AllowCredentialCache && TokenStore.IsSecureCacheAvailable()
+            ? " Cache updated."
+            : " Cache unchanged.";
         return $"Token {src} and active. Valid until {expiry.LocalDateTime:ddd MMM d, h:mm tt} "
-             + $"(about {mins} minutes from now).";
+             + $"(about {mins} minutes from now).{cacheState}";
     }
 
     [McpServerTool, Description("List all Suno playlists with name, ID, and song count.")]

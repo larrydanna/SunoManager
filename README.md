@@ -19,6 +19,10 @@
 
 [Suno API Documentation](https://docs.sunoapi.org/)
 
+## Credential Cache
+
+Set `Suno:AllowCredentialCache` to `true` in `appsettings.local.json` if you want SunoManager to cache your token locally in a protected store (`%APPDATA%/SunoManager/token.json` on Windows). If disabled (default), SunoManager continues normal flow without cached login.
+
 ## Todo
 
 |Status|As Of|Task|
