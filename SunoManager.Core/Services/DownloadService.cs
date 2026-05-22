@@ -183,9 +183,9 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
         foreach (var entry in man.Songs.Values.OrderBy(e => e.Playlist).ThenBy(e => e.Title))
         {
             var secs = (int)Math.Round(entry.DurationSeconds ?? 0);
-            sb.AppendLine($"#EXTINF:{secs},{artist} - {entry.Title}");
-            // Path relative to library root, forward slashes for portability.
-            sb.AppendLine(entry.RelativePath.Replace('\\', '/'));
+            var rel = entry.RelativePath.Replace('\\', '/');
+            AppendPlaylistEntry(sb, secs, $"{artist} - {entry.Title}", rel,
+                TryGetCoverPathForEntry(config.LibraryPath, rel));
         }
 
         var m3uPath = Path.Combine(config.LibraryPath, "All Songs.m3u8");
@@ -202,14 +202,14 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
         var artist = string.IsNullOrWhiteSpace(config.Artist) ? "Suno" : config.Artist;
         var sb = new StringBuilder();
         sb.AppendLine("#EXTM3U");
+        var coverRel = File.Exists(Path.Combine(playlistDir, "cover.jpg")) ? "cover.jpg" : null;
 
         foreach (var (song, filePath) in ordered)
         {
             var secs = (int)Math.Round(song.DurationSeconds ?? 0);
-            sb.AppendLine($"#EXTINF:{secs},{artist} - {song.Title}");
             // Path relative to the playlist folder, forward slashes for portability.
             var rel = Path.GetRelativePath(playlistDir, filePath).Replace('\\', '/');
-            sb.AppendLine(rel);
+            AppendPlaylistEntry(sb, secs, $"{artist} - {song.Title}", rel, coverRel);
         }
 
         var m3uPath = Path.Combine(playlistDir, $"{playlist.SafeName}.m3u8");
@@ -228,6 +228,30 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
             candidate = Path.Combine(dir, $"{baseName} ({n}).{ext}");
             if (!File.Exists(candidate)) return candidate;
         }
+    }
+
+    private static void AppendPlaylistEntry(StringBuilder sb, int seconds,
+        string displayTitle, string mediaPath, string? artworkPath)
+    {
+        sb.AppendLine($"#EXTINF:{seconds},{displayTitle}");
+        if (!string.IsNullOrWhiteSpace(artworkPath))
+        {
+            sb.AppendLine($"#EXTIMG:{artworkPath}");
+            sb.AppendLine($"#EXTVLCOPT:artwork-url={artworkPath}");
+        }
+        sb.AppendLine(mediaPath);
+    }
+
+    private static string? TryGetCoverPathForEntry(string libraryRoot, string relativeMediaPath)
+    {
+        var mediaDir = Path.GetDirectoryName(relativeMediaPath);
+        var coverRel = string.IsNullOrWhiteSpace(mediaDir)
+            ? "cover.jpg"
+            : Path.Combine(mediaDir, "cover.jpg");
+
+        return File.Exists(Path.Combine(libraryRoot, coverRel))
+            ? coverRel.Replace('\\', '/')
+            : null;
     }
 }
 
