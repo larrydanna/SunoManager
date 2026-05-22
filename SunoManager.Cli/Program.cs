@@ -88,6 +88,8 @@ static async Task RunSync(string[] args, IServiceProvider sp, SunoConfig config)
         var result = await downloader.SyncPlaylistAsync(playlist, progress);
         Console.WriteLine($"  Done -- {result.Downloaded} downloaded, {result.Skipped} skipped, {result.Failed} failed");
     }
+
+    await downloader.WriteMasterPlaylistAsync(progress);
 }
 
 static void RunExport(string[] args, IServiceProvider sp, SunoConfig config)
