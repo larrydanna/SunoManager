@@ -1,0 +1,608 @@
+authorization
+Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InN1bm8tYXBpLXJzMjU2LWtleS0xIiwidHlwIjoiSldUIn0.eyJzdW5vLmNvbS9jbGFpbXMvdXNlcl9pZCI6IjBlODRhMmVhLWMzODQtNDI4OS04OGIxLTQ5ZTAxZGU4MWJjOSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvY2xlcmtfaWQiOiJ1c2VyXzJ1OG5EZGZpWDN0ZDRkY3dKc01CNGVDMlR0QiIsInN1bm8uY29tL2NsYWltcy90b2tlbl90eXBlIjoiYWNjZXNzIiwic3Vuby9kaWQiOjQ1NDk0MTc3LCJleHAiOjE3Nzk0MjM4MzQsImF1ZCI6InN1bm8tYXBpIiwic3ViIjoidXNlcl8ydThuRGRmaVgzdGQ0ZGN3SnNNQjRlQzJUdEIiLCJhenAiOiJodHRwczovL3N1bm8uY29tIiwiZnZhIjpbMCwtMV0sImlhdCI6MTc3OTQyMDIzNCwiaXNzIjoiaHR0cHM6Ly9hdXRoLnN1bm8uY29tIiwiaml0IjoiMTU4Y2Y5MDAtZmNlNi00ZjE4LWI2YTgtZDkyMTM0ZWNiZWUwIiwicGxhbiI6IjNlYWViZWYzLWVmNDYtNDQ2YS05MzFjLTNkNTBjZDE1MTRmMTp5ZWFyOiIsInN1bm8vam9pbmVkIjoxNzQxNjM4OTU0LCJzaWQiOiJzZXNzaW9uXzc5MTJjMTVlNGE2YjVhZGRlZTExMzYiLCJzdW5vLmNvbS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsInN1bm8uY29tL2NsYWltcy9waG9uZSI6IisxOTM3NDc5Mzk4OCIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvcGhvbmUiOiIrMTkzNzQ3OTM5ODgiLCJzdW5vL2hhbmRsZSI6ImxhcnJ5ZGFubmEiLCJzdW5vL3VzZXJfaWQiOiI3NTEzODQ2NCIsInN1bm8vdXNlcm5hbWUiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSJ9.Ln7SpMPfBtZjtcrubGQAqkpM0vQ-wKvgrwur3HEpc371rOodJGiyIYm5DreS-r23hDE2Iw18-aD8eAd7mMGoAPWeEBn1jTfH6YSwu_vQBBPARHUs6gWjF4aBK0rlcChUMMK5w32tXLGLWK9-3UaqwwcrigThihssBpnKOeKV_PrEdEldUHmY0pneXafiZNAgWNHeSN-CgspWkCDaKl_cFNQNNiy8i4xLs3N2FFT3VnY4ZoPBVo35ORmZ87fqFhiX4He4veHTnyb1VMhrjOEq-o6siaSV3wuoeynzGN9FHtHKQ6JRDryDkylq9KRZWisUjuIXTGr244lQKxOwYvXKwQ
+browser-token
+{"token":"eyJ0aW1lc3RhbXAiOjE3Nzk0MjAyMzUxNjR9"}
+content-type
+application/json
+device-id
+fb37f21c-6c70-4175-a081-6271f1511dda
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+baggage
+sentry-environment=vercel-production,sentry-release=6dcd35018a8a5de5b06cd9e109eea519bb9f4619,sentry-public_key=6bbb841ff7b785e4f69e9a32335f8b91,sentry-trace_id=71b1d39f89804e6792a8c4d21b97a2fb,sentry-org_id=1183403,sentry-transaction=%2Fplaylist%2F%3Aslug,sentry-sampled=false,sentry-sample_rand=0.019664141244149946,sentry-sample_rate=0
+next-router-state-tree
+%5B%22%22%2C%7B%22children%22%3A%5B%22(root)%22%2C%7B%22children%22%3A%5B%22me%22%2C%7B%22children%22%3A%5B%22playlists%22%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%2C0%5D%7D%2Cnull%2Cnull%2C0%5D%7D%2Cnull%2Cnull%2C0%5D%7D%2Cnull%2Cnull%2C16%5D%7D%2Cnull%2Cnull%2C0%5D
+next-url
+/me/playlists
+referer
+https://suno.com/me/playlists
+rsc
+1
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+sentry-trace
+71b1d39f89804e6792a8c4d21b97a2fb-bc6e5411faed90e2-0
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+x-deployment-id
+dpl_sMD5kJS4U59Cacn1Dsp3YetpAu8D
+
+
+Request URL
+https://studio-api-prod.suno.com/api/feed/v3
+Request Method
+POST
+Status Code
+200 OK
+Remote Address
+104.20.16.212:443
+Referrer Policy
+strict-origin-when-cross-origin
+access-control-allow-credentials
+true
+access-control-allow-origin
+https://suno.com
+access-control-expose-headers
+session-id, Date
+cf-cache-status
+DYNAMIC
+cf-ray
+9ff8b4753a00ceb4-CMH
+content-encoding
+br
+content-type
+application/json; charset=utf-8
+cross-origin-opener-policy
+same-origin
+date
+Fri, 22 May 2026 03:23:55 GMT
+referrer-policy
+same-origin
+server
+cloudflare
+session-id
+e908920d2925dce7421490325a2f985651572d85fb465ddd03e6ba2b9455dd14
+vary
+origin
+x-content-type-options
+nosniff
+x-frame-options
+DENY
+x-request-id
+c3378b51-815b-44b1-b402-2a15e4c06c72
+authorization
+Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InN1bm8tYXBpLXJzMjU2LWtleS0xIiwidHlwIjoiSldUIn0.eyJzdW5vLmNvbS9jbGFpbXMvdXNlcl9pZCI6IjBlODRhMmVhLWMzODQtNDI4OS04OGIxLTQ5ZTAxZGU4MWJjOSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvY2xlcmtfaWQiOiJ1c2VyXzJ1OG5EZGZpWDN0ZDRkY3dKc01CNGVDMlR0QiIsInN1bm8uY29tL2NsYWltcy90b2tlbl90eXBlIjoiYWNjZXNzIiwic3Vuby9kaWQiOjQ1NDk0MTc3LCJleHAiOjE3Nzk0MjM4MzQsImF1ZCI6InN1bm8tYXBpIiwic3ViIjoidXNlcl8ydThuRGRmaVgzdGQ0ZGN3SnNNQjRlQzJUdEIiLCJhenAiOiJodHRwczovL3N1bm8uY29tIiwiZnZhIjpbMCwtMV0sImlhdCI6MTc3OTQyMDIzNCwiaXNzIjoiaHR0cHM6Ly9hdXRoLnN1bm8uY29tIiwiaml0IjoiMTU4Y2Y5MDAtZmNlNi00ZjE4LWI2YTgtZDkyMTM0ZWNiZWUwIiwicGxhbiI6IjNlYWViZWYzLWVmNDYtNDQ2YS05MzFjLTNkNTBjZDE1MTRmMTp5ZWFyOiIsInN1bm8vam9pbmVkIjoxNzQxNjM4OTU0LCJzaWQiOiJzZXNzaW9uXzc5MTJjMTVlNGE2YjVhZGRlZTExMzYiLCJzdW5vLmNvbS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsInN1bm8uY29tL2NsYWltcy9waG9uZSI6IisxOTM3NDc5Mzk4OCIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvcGhvbmUiOiIrMTkzNzQ3OTM5ODgiLCJzdW5vL2hhbmRsZSI6ImxhcnJ5ZGFubmEiLCJzdW5vL3VzZXJfaWQiOiI3NTEzODQ2NCIsInN1bm8vdXNlcm5hbWUiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSJ9.Ln7SpMPfBtZjtcrubGQAqkpM0vQ-wKvgrwur3HEpc371rOodJGiyIYm5DreS-r23hDE2Iw18-aD8eAd7mMGoAPWeEBn1jTfH6YSwu_vQBBPARHUs6gWjF4aBK0rlcChUMMK5w32tXLGLWK9-3UaqwwcrigThihssBpnKOeKV_PrEdEldUHmY0pneXafiZNAgWNHeSN-CgspWkCDaKl_cFNQNNiy8i4xLs3N2FFT3VnY4ZoPBVo35ORmZ87fqFhiX4He4veHTnyb1VMhrjOEq-o6siaSV3wuoeynzGN9FHtHKQ6JRDryDkylq9KRZWisUjuIXTGr244lQKxOwYvXKwQ
+browser-token
+{"token":"eyJ0aW1lc3RhbXAiOjE3Nzk0MjAyMzUxNjR9"}
+content-type
+application/json
+device-id
+fb37f21c-6c70-4175-a081-6271f1511dda
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+Request URL
+https://studio-api-prod.suno.com/api/challenge/progress
+Request Method
+GET
+Status Code
+200 OK
+Remote Address
+104.20.16.212:443
+Referrer Policy
+strict-origin-when-cross-origin
+access-control-allow-credentials
+true
+access-control-allow-origin
+https://suno.com
+cf-cache-status
+DYNAMIC
+cf-ray
+9ff8bb5a5c85ceb4-CMH
+content-encoding
+br
+content-type
+application/json; charset=utf-8
+cross-origin-opener-policy
+same-origin
+date
+Fri, 22 May 2026 03:28:37 GMT
+referrer-policy
+same-origin
+server
+cloudflare
+vary
+origin
+x-content-type-options
+nosniff
+x-frame-options
+DENY
+x-request-id
+f2e1d79a-01e1-4007-a22a-32f969bffd64
+authorization
+Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InN1bm8tYXBpLXJzMjU2LWtleS0xIiwidHlwIjoiSldUIn0.eyJzdW5vLmNvbS9jbGFpbXMvdXNlcl9pZCI6IjBlODRhMmVhLWMzODQtNDI4OS04OGIxLTQ5ZTAxZGU4MWJjOSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvY2xlcmtfaWQiOiJ1c2VyXzJ1OG5EZGZpWDN0ZDRkY3dKc01CNGVDMlR0QiIsInN1bm8uY29tL2NsYWltcy90b2tlbl90eXBlIjoiYWNjZXNzIiwic3Vuby9kaWQiOjQ1NDk0MTc3LCJleHAiOjE3Nzk0MjQxMTcsImF1ZCI6InN1bm8tYXBpIiwic3ViIjoidXNlcl8ydThuRGRmaVgzdGQ0ZGN3SnNNQjRlQzJUdEIiLCJhenAiOiJodHRwczovL3N1bm8uY29tIiwiZnZhIjpbMCwtMV0sImlhdCI6MTc3OTQyMDUxNywiaXNzIjoiaHR0cHM6Ly9hdXRoLnN1bm8uY29tIiwiaml0IjoiZTNjMWQ0NDItNjBjNi00YTE5LTgwMmUtMTgzMGQ2ZmVkYTRjIiwicGxhbiI6IjNlYWViZWYzLWVmNDYtNDQ2YS05MzFjLTNkNTBjZDE1MTRmMTp5ZWFyOiIsInN1bm8vam9pbmVkIjoxNzQxNjM4OTU0LCJzaWQiOiJzZXNzaW9uXzc5MTJjMTVlNGE2YjVhZGRlZTExMzYiLCJzdW5vLmNvbS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsInN1bm8uY29tL2NsYWltcy9waG9uZSI6IisxOTM3NDc5Mzk4OCIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvcGhvbmUiOiIrMTkzNzQ3OTM5ODgiLCJzdW5vL2hhbmRsZSI6ImxhcnJ5ZGFubmEiLCJzdW5vL3VzZXJfaWQiOiI3NTEzODQ2NCIsInN1bm8vdXNlcm5hbWUiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSJ9.Xygkz1ne6TnFnMW0xhDZ7WCZ1dNr6zpiyqgNnbk3_mheE-9yIdTiapgN_R8uS6BD50AgRUJb3Zy4Li77-c464--Lcxzwzqkt4gFKQG3-w3wxD275O4vOBBX0rMOqlIQpaQUjIbg7ddH1zfYBusGQvHbJOQL1raqj0qG4qaJ9DgsI5_KkU8tz1ALWX9-KxFBOwddz3162lXbYm05M5LAgVwvB5W8dDRN9C8HfITFKJlepSziphbDIGyD17tnzYoScUHbypDAw1bxpYvX_5xCmlwq0r4dTxp_fK03u9oJFkRItgGRFXYUj-uBS8Cq6ijCcyL7ZmvJRnSLZfupmI5H3lQ
+browser-token
+{"token":"eyJ0aW1lc3RhbXAiOjE3Nzk0MjA1MTc1ODZ9"}
+device-id
+fb37f21c-6c70-4175-a081-6271f1511dda
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+Request URL
+https://suno.com/playlist/1a0b58ab-fd0a-4a87-b245-80e1df096e7d?_rsc=bav2kHkuAWvZxtcK
+Request Method
+GET
+Status Code
+200 OK
+Remote Address
+172.66.144.155:443
+Referrer Policy
+strict-origin-when-cross-origin
+age
+0
+cache-control
+private, no-cache, no-store, max-age=0, must-revalidate
+cf-cache-status
+DYNAMIC
+cf-ray
+9ff8bb76afa4cf7f-CMH
+content-encoding
+br
+content-security-policy
+frame-ancestors 'none'; font-src 'self'
+content-type
+text/x-component
+date
+Fri, 22 May 2026 03:28:42 GMT
+server
+cloudflare
+strict-transport-security
+max-age=63072000
+vary
+rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, accept-encoding
+x-content-type-options
+nosniff
+x-frame-options
+SAMEORIGIN
+x-matched-path
+/playlist/[slug].rsc
+x-nextjs-deployment-id
+dpl_sMD5kJS4U59Cacn1Dsp3YetpAu8D
+x-vercel-cache
+MISS
+x-vercel-id
+cle1::iad1::x2qgk-1779420522031-dcf7cb0dfb9e
+baggage
+sentry-environment=vercel-production,sentry-release=6dcd35018a8a5de5b06cd9e109eea519bb9f4619,sentry-public_key=6bbb841ff7b785e4f69e9a32335f8b91,sentry-trace_id=0c1881a793c743b087d216691e9c9f2b,sentry-org_id=1183403,sentry-transaction=%2Fplaylist%2F%3Aslug,sentry-sampled=false,sentry-sample_rand=0.8108264835536121,sentry-sample_rate=0
+next-router-state-tree
+%5B%22%22%2C%7B%22children%22%3A%5B%22(root)%22%2C%7B%22children%22%3A%5B%22me%22%2C%7B%22children%22%3A%5B%22playlists%22%2C%7B%22children%22%3A%5B%22__PAGE__%22%2C%7B%7D%2Cnull%2Cnull%2C0%5D%7D%2Cnull%2Cnull%2C0%5D%7D%2Cnull%2Cnull%2C0%5D%7D%2Cnull%2Cnull%2C16%5D%7D%2Cnull%2Cnull%2C0%5D
+next-url
+/me/playlists
+referer
+https://suno.com/me/playlists
+rsc
+1
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+sentry-trace
+0c1881a793c743b087d216691e9c9f2b-8eb5417e1d790892-0
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+x-deployment-id
+dpl_sMD5kJS4U59Cacn1Dsp3YetpAu8D
+
+Request URL
+https://studio-api-prod.suno.com/api/clips/d7c5a33c-503f-4cc8-b77d-764d4bee8944/attribution
+Request Method
+GET
+Status Code
+200 OK
+Remote Address
+172.66.144.155:443
+Referrer Policy
+strict-origin-when-cross-origin
+access-control-allow-credentials
+true
+access-control-allow-origin
+https://suno.com
+access-control-expose-headers
+session-id, Date
+cf-cache-status
+DYNAMIC
+cf-ray
+9ff8bff5b8ab4d25-CLE
+content-encoding
+br
+content-type
+application/json; charset=utf-8
+cross-origin-opener-policy
+same-origin
+date
+Fri, 22 May 2026 03:31:46 GMT
+referrer-policy
+same-origin
+server
+cloudflare
+session-id
+e908920d2925dce7421490325a2f985651572d85fb465ddd03e6ba2b9455dd14
+vary
+origin
+x-content-type-options
+nosniff
+x-frame-options
+DENY
+x-request-id
+a2114394-25d6-4218-b901-55eb043c9035
+authorization
+Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InN1bm8tYXBpLXJzMjU2LWtleS0xIiwidHlwIjoiSldUIn0.eyJzdW5vLmNvbS9jbGFpbXMvdXNlcl9pZCI6IjBlODRhMmVhLWMzODQtNDI4OS04OGIxLTQ5ZTAxZGU4MWJjOSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvY2xlcmtfaWQiOiJ1c2VyXzJ1OG5EZGZpWDN0ZDRkY3dKc01CNGVDMlR0QiIsInN1bm8uY29tL2NsYWltcy90b2tlbl90eXBlIjoiYWNjZXNzIiwic3Vuby9kaWQiOjQ1NDk0MTc3LCJleHAiOjE3Nzk0MjQzMDUsImF1ZCI6InN1bm8tYXBpIiwic3ViIjoidXNlcl8ydThuRGRmaVgzdGQ0ZGN3SnNNQjRlQzJUdEIiLCJhenAiOiJodHRwczovL3N1bm8uY29tIiwiZnZhIjpbMCwtMV0sImlhdCI6MTc3OTQyMDcwNSwiaXNzIjoiaHR0cHM6Ly9hdXRoLnN1bm8uY29tIiwiaml0IjoiYzQyOWI0YjUtYzBkNC00NzJjLWI3MDYtZmVmYzMxMmQyY2Y2IiwicGxhbiI6IjNlYWViZWYzLWVmNDYtNDQ2YS05MzFjLTNkNTBjZDE1MTRmMTp5ZWFyOiIsInN1bm8vam9pbmVkIjoxNzQxNjM4OTU0LCJzaWQiOiJzZXNzaW9uXzc5MTJjMTVlNGE2YjVhZGRlZTExMzYiLCJzdW5vLmNvbS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsInN1bm8uY29tL2NsYWltcy9waG9uZSI6IisxOTM3NDc5Mzk4OCIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvcGhvbmUiOiIrMTkzNzQ3OTM5ODgiLCJzdW5vL2hhbmRsZSI6ImxhcnJ5ZGFubmEiLCJzdW5vL3VzZXJfaWQiOiI3NTEzODQ2NCIsInN1bm8vdXNlcm5hbWUiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSJ9.qgMOqJYJKdn1s77oWDqFL2E7KW_Nr73e7YvXVSByqKeGzFYpjYEqU0hiH_vxF93ektwcTAWk741G7WRbnuCgpJVXQVvzeZ1bcFtRyWO_t5zcvOlrHgMT8Qo0sFmcqCZQCB1ZWQ5H52AIgUlxGlP57B6xDJZiGMKPuiSx1nivSnEpbLOMNSnM9XGXLxOQcvGfSUdon6B4lzeHTdQj0Co3S1OURaKSq4i26a8Z_QNfe1wVQ2p2loYceKrk5gzLc2emJjBKH2X_b9ihIiDL27XVXW2QbIj2QVItQYpCWJZTW5BWRoFstD1rDxx2tUVRnV5ekN9yOPvMqVOCAWT3ETkODA
+browser-token
+{"token":"eyJ0aW1lc3RhbXAiOjE3Nzk0MjA3MDYyMzN9"}
+device-id
+fb37f21c-6c70-4175-a081-6271f1511dda
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+
+Request URL
+https://studio-api-prod.suno.com/api/download/clip/d7c5a33c-503f-4cc8-b77d-764d4bee8944?format=mp3
+Request Method
+GET
+Status Code
+200 OK
+Remote Address
+172.66.144.155:443
+Referrer Policy
+strict-origin-when-cross-origin
+access-control-allow-credentials
+true
+access-control-allow-origin
+https://suno.com
+access-control-expose-headers
+session-id, Date
+cf-cache-status
+DYNAMIC
+cf-ray
+9ff8c0154be34d25-CLE
+content-encoding
+br
+content-type
+application/json; charset=utf-8
+cross-origin-opener-policy
+same-origin
+date
+Fri, 22 May 2026 03:31:51 GMT
+referrer-policy
+same-origin
+server
+cloudflare
+session-id
+e908920d2925dce7421490325a2f985651572d85fb465ddd03e6ba2b9455dd14
+vary
+origin
+x-content-type-options
+nosniff
+x-frame-options
+DENY
+x-request-id
+5bf19986-8b53-4f7e-8c6b-415ddf4f8c34
+authorization
+Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InN1bm8tYXBpLXJzMjU2LWtleS0xIiwidHlwIjoiSldUIn0.eyJzdW5vLmNvbS9jbGFpbXMvdXNlcl9pZCI6IjBlODRhMmVhLWMzODQtNDI4OS04OGIxLTQ5ZTAxZGU4MWJjOSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvY2xlcmtfaWQiOiJ1c2VyXzJ1OG5EZGZpWDN0ZDRkY3dKc01CNGVDMlR0QiIsInN1bm8uY29tL2NsYWltcy90b2tlbl90eXBlIjoiYWNjZXNzIiwic3Vuby9kaWQiOjQ1NDk0MTc3LCJleHAiOjE3Nzk0MjQzMDUsImF1ZCI6InN1bm8tYXBpIiwic3ViIjoidXNlcl8ydThuRGRmaVgzdGQ0ZGN3SnNNQjRlQzJUdEIiLCJhenAiOiJodHRwczovL3N1bm8uY29tIiwiZnZhIjpbMCwtMV0sImlhdCI6MTc3OTQyMDcwNSwiaXNzIjoiaHR0cHM6Ly9hdXRoLnN1bm8uY29tIiwiaml0IjoiYzQyOWI0YjUtYzBkNC00NzJjLWI3MDYtZmVmYzMxMmQyY2Y2IiwicGxhbiI6IjNlYWViZWYzLWVmNDYtNDQ2YS05MzFjLTNkNTBjZDE1MTRmMTp5ZWFyOiIsInN1bm8vam9pbmVkIjoxNzQxNjM4OTU0LCJzaWQiOiJzZXNzaW9uXzc5MTJjMTVlNGE2YjVhZGRlZTExMzYiLCJzdW5vLmNvbS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsInN1bm8uY29tL2NsYWltcy9waG9uZSI6IisxOTM3NDc5Mzk4OCIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvcGhvbmUiOiIrMTkzNzQ3OTM5ODgiLCJzdW5vL2hhbmRsZSI6ImxhcnJ5ZGFubmEiLCJzdW5vL3VzZXJfaWQiOiI3NTEzODQ2NCIsInN1bm8vdXNlcm5hbWUiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSJ9.qgMOqJYJKdn1s77oWDqFL2E7KW_Nr73e7YvXVSByqKeGzFYpjYEqU0hiH_vxF93ektwcTAWk741G7WRbnuCgpJVXQVvzeZ1bcFtRyWO_t5zcvOlrHgMT8Qo0sFmcqCZQCB1ZWQ5H52AIgUlxGlP57B6xDJZiGMKPuiSx1nivSnEpbLOMNSnM9XGXLxOQcvGfSUdon6B4lzeHTdQj0Co3S1OURaKSq4i26a8Z_QNfe1wVQ2p2loYceKrk5gzLc2emJjBKH2X_b9ihIiDL27XVXW2QbIj2QVItQYpCWJZTW5BWRoFstD1rDxx2tUVRnV5ekN9yOPvMqVOCAWT3ETkODA
+browser-token
+{"token":"eyJ0aW1lc3RhbXAiOjE3Nzk0MjA3MTEyNzd9"}
+device-id
+fb37f21c-6c70-4175-a081-6271f1511dda
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+Request URL
+https://studio-api-prod.suno.com/api/billing/clips/d7c5a33c-503f-4cc8-b77d-764d4bee8944/download/
+Request Method
+POST
+Status Code
+200 OK
+Remote Address
+172.66.144.155:443
+Referrer Policy
+strict-origin-when-cross-origin
+access-control-allow-credentials
+true
+access-control-allow-origin
+https://suno.com
+access-control-expose-headers
+session-id, Date
+cf-cache-status
+DYNAMIC
+cf-ray
+9ff8c0154be44d25-CLE
+content-length
+12
+content-type
+application/json; charset=utf-8
+cross-origin-opener-policy
+same-origin
+date
+Fri, 22 May 2026 03:31:51 GMT
+referrer-policy
+same-origin
+server
+cloudflare
+session-id
+e908920d2925dce7421490325a2f985651572d85fb465ddd03e6ba2b9455dd14
+vary
+origin
+x-content-type-options
+nosniff
+x-frame-options
+DENY
+x-request-id
+e1fd10f8-98e8-40b5-bdea-480d4371687b
+authorization
+Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6InN1bm8tYXBpLXJzMjU2LWtleS0xIiwidHlwIjoiSldUIn0.eyJzdW5vLmNvbS9jbGFpbXMvdXNlcl9pZCI6IjBlODRhMmVhLWMzODQtNDI4OS04OGIxLTQ5ZTAxZGU4MWJjOSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvY2xlcmtfaWQiOiJ1c2VyXzJ1OG5EZGZpWDN0ZDRkY3dKc01CNGVDMlR0QiIsInN1bm8uY29tL2NsYWltcy90b2tlbl90eXBlIjoiYWNjZXNzIiwic3Vuby9kaWQiOjQ1NDk0MTc3LCJleHAiOjE3Nzk0MjQzMDUsImF1ZCI6InN1bm8tYXBpIiwic3ViIjoidXNlcl8ydThuRGRmaVgzdGQ0ZGN3SnNNQjRlQzJUdEIiLCJhenAiOiJodHRwczovL3N1bm8uY29tIiwiZnZhIjpbMCwtMV0sImlhdCI6MTc3OTQyMDcwNSwiaXNzIjoiaHR0cHM6Ly9hdXRoLnN1bm8uY29tIiwiaml0IjoiYzQyOWI0YjUtYzBkNC00NzJjLWI3MDYtZmVmYzMxMmQyY2Y2IiwicGxhbiI6IjNlYWViZWYzLWVmNDYtNDQ2YS05MzFjLTNkNTBjZDE1MTRmMTp5ZWFyOiIsInN1bm8vam9pbmVkIjoxNzQxNjM4OTU0LCJzaWQiOiJzZXNzaW9uXzc5MTJjMTVlNGE2YjVhZGRlZTExMzYiLCJzdW5vLmNvbS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvZW1haWwiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSIsInN1bm8uY29tL2NsYWltcy9waG9uZSI6IisxOTM3NDc5Mzk4OCIsImh0dHBzOi8vc3Vuby5haS9jbGFpbXMvcGhvbmUiOiIrMTkzNzQ3OTM5ODgiLCJzdW5vL2hhbmRsZSI6ImxhcnJ5ZGFubmEiLCJzdW5vL3VzZXJfaWQiOiI3NTEzODQ2NCIsInN1bm8vdXNlcm5hbWUiOiJsYXJyeWRhbm5hQGdtYWlsLmNvbSJ9.qgMOqJYJKdn1s77oWDqFL2E7KW_Nr73e7YvXVSByqKeGzFYpjYEqU0hiH_vxF93ektwcTAWk741G7WRbnuCgpJVXQVvzeZ1bcFtRyWO_t5zcvOlrHgMT8Qo0sFmcqCZQCB1ZWQ5H52AIgUlxGlP57B6xDJZiGMKPuiSx1nivSnEpbLOMNSnM9XGXLxOQcvGfSUdon6B4lzeHTdQj0Co3S1OURaKSq4i26a8Z_QNfe1wVQ2p2loYceKrk5gzLc2emJjBKH2X_b9ihIiDL27XVXW2QbIj2QVItQYpCWJZTW5BWRoFstD1rDxx2tUVRnV5ekN9yOPvMqVOCAWT3ETkODA
+browser-token
+{"token":"eyJ0aW1lc3RhbXAiOjE3Nzk0MjA3MTEyNzd9"}
+device-id
+fb37f21c-6c70-4175-a081-6271f1511dda
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+Request URL
+https://cdn1.suno.ai/d7c5a33c-503f-4cc8-b77d-764d4bee8944.mp3
+Request Method
+GET
+Status Code
+200 OK
+Remote Address
+108.156.184.114:443
+Referrer Policy
+strict-origin-when-cross-origin
+accept-ranges
+bytes
+access-control-allow-origin
+*
+access-control-expose-headers
+*
+alt-svc
+h3=":443"; ma=86400
+content-length
+6104574
+content-type
+audio/mp3
+cross-origin-resource-policy
+cross-origin
+date
+Fri, 22 May 2026 03:31:52 GMT
+etag
+"f7fad78517d837de931b8efb2b1e25a3"
+last-modified
+Wed, 13 May 2026 00:11:15 GMT
+server
+AmazonS3
+via
+1.1 8d8e064c65472b4d9092417cdcece59c.cloudfront.net (CloudFront)
+x-amz-cf-id
+XcCsKxKhJxrkFF6BFINN-u0ZnbNt9Wh-cGffXO4uFSt0QvOl_V2n_A==
+x-amz-cf-pop
+CMH68-P2
+x-amz-server-side-encryption
+AES256
+x-amz-storage-class
+INTELLIGENT_TIERING
+x-amz-version-id
+Ze7gZ6kCrc1ke6B7WhEcdMJN1s1310ks
+x-cache
+Miss from cloudfront
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+Request URL
+https://cdn2.suno.ai/image_d7c5a33c-503f-4cc8-b77d-764d4bee8944.jpeg
+Request Method
+GET
+Status Code
+200 OK
+Remote Address
+3.160.22.6:443
+Referrer Policy
+strict-origin-when-cross-origin
+accept-ranges
+bytes
+access-control-allow-origin
+*
+access-control-expose-headers
+*
+age
+789147
+alt-svc
+h3=":443"; ma=86400
+cache-control
+public,max-age=2592000
+content-length
+6248
+content-type
+image/jpeg
+cross-origin-resource-policy
+cross-origin
+date
+Wed, 13 May 2026 00:19:24 GMT
+via
+1.1 28541d1c5ba94fa4ae7d6f7a2c07f4f8.cloudfront.net (CloudFront)
+x-amz-apigw-id
+dRt99FfAoAMEL3A=
+x-amz-cf-id
+NNty07chsDgcjEFdKLJM1jn757haaCQ-pkTT6YhdWakSWedPm-wIBg==
+x-amz-cf-pop
+CMH68-P3
+x-amzn-remapped-content-length
+6248
+x-amzn-requestid
+6768e519-65c6-4f00-8e31-a052ff993c84
+x-amzn-trace-id
+Root=1-6a03c38c-1214f8b86ae82ccd3e9b9755;Parent=56a3ef96d5bbe245;Sampled=0;Lineage=1:420d00c8:0
+x-cache
+Hit from cloudfront
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+Request URL
+https://s.prod.suno.com/v1/rgstr?k=client-DaZjubWc7zwnZ5o2EEJhqt4UYRzYRoUuHbTQcIH9Ybq&st=javascript-client-react&sv=3.25.5&t=1779420712318&sid=ee147791-eacb-4740-bd77-88cdbb017872&ec=7
+Request Method
+POST
+Status Code
+202 Accepted
+Remote Address
+3.170.131.44:443
+Referrer Policy
+strict-origin-when-cross-origin
+access-control-allow-credentials
+true
+access-control-allow-origin
+*
+connection
+keep-alive
+content-length
+16
+content-type
+application/json
+date
+Fri, 22 May 2026 03:31:52 GMT
+permissions-policy
+interest-cohort=()
+referrer-policy
+strict-origin-when-cross-origin
+via
+1.1 google, 1.1 51acaa499b8a860796a06c2570d22afe.cloudfront.net (CloudFront)
+x-amz-cf-id
+Rb2jthkTu2HYc2IM3uNjLPSBVE24VEphFAV77T4PMyPTCBXB6aboPw==
+x-amz-cf-pop
+CMH68-P6
+x-cache
+Miss from cloudfront
+x-content-type-options
+nosniff, nosniff
+x-frame-options
+SAMEORIGIN
+x-response-time
+0 ms
+content-type
+text/plain;charset=UTF-8
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+
+Request URL
+https://m-stratovibe.prod.suno.com/agg-receiver-service/v1/events/b
+Request Method
+POST
+Status Code
+200 OK
+Remote Address
+18.225.68.66:443
+Referrer Policy
+strict-origin-when-cross-origin
+access-control-allow-origin
+https://suno.com
+content-length
+21
+content-type
+application/json
+date
+Fri, 22 May 2026 03:31:53 GMT
+x-amz-apigw-id
+dv0mlHhSCYcEUKQ=
+x-amzn-requestid
+a848d182-1a7e-4f8d-a8a9-6b5705b807eb
+x-amzn-trace-id
+Root=1-6a0fce29-0e9e8f2f1ce225ea3933a670;Parent=7ca2ae6daa8e9934;Sampled=0;Lineage=1:5ff227b7:0
+content-type
+text/plain
+referer
+https://suno.com/
+sec-ch-ua
+"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile
+?0
+sec-ch-ua-platform
+"Windows"
+user-agent
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36
+

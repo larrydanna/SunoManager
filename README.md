@@ -1,0 +1,27 @@
+# SunoManager
+
+
+## Questions
+
+|Q & A||
+|-|-|
+|:red_circle:|Is gstack being used when working on this?|
+|Answer:||
+
+## Links
+[Network Captures for API Discovery](artifacts\network-capture.txt)
+
+[Suno API Documentation](https://docs.sunoapi.org/)
+
+## Todo
+
+|Status|As Of|Task|
+|-|-|-|
+:red_circle:|5/22/2026, 2:27:08 AM|git initialize
+:red_circle:|5/22/2026, 2:27:08 AM|Push to GitHub larrydanna
+:red_circle:|5/22/2026, 2:27:08 AM|Document the MCP interface and all the projects, README.md at each interesting level
+:red_circle:|5/22/2026, 2:56:15 AM|Add secure credential cache, let me store my login locally
+:red_circle:|5/22/2026, 2:56:20 AM|Pull your own bearer token when needed, store it
+:red_circle:|5/22/2026, 2:59:19 AM|Add master playlist in the root
+:red_circle:|5/22/2026, 3:03:15 AM|Add Title to lyrics txt
+:red_circle:|5/22/2026, 3:12:37 AM|CLI Help

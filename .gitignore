@@ -1,0 +1,8 @@
+bin/
+obj/
+publish/
+*.user
+.vs/
+
+# Keep token out of source control
+**/appsettings.local.json
