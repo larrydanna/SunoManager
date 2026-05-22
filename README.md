@@ -1,5 +1,11 @@
 # SunoManager
 
+## Project Documentation
+
+- [SunoManager.Cli](SunoManager.Cli/README.md) - command-line sync and export workflow
+- [SunoManager.Core](SunoManager.Core/README.md) - shared models and services
+- [SunoManager.Mcp](SunoManager.Mcp/README.md) - MCP server setup and tool interface
+
 
 ## Questions
 
@@ -17,9 +23,10 @@
 
 |Status|As Of|Task|
 |-|-|-|
+=======
 🟩|5/22/2026, 5:13:08 AM|git initialize
 🟩|5/22/2026, 5:13:08 AM|Push to GitHub larrydanna
-:red_circle:|5/22/2026, 2:27:08 AM|Document the MCP interface and all the projects, README.md at each interesting level
+🟩|5/22/2026, 2:27:08 AM|Document the MCP interface and all the projects, README.md at each interesting level
 :red_circle:|5/22/2026, 2:56:15 AM|Add secure credential cache, let me store my login locally
 :red_circle:|5/22/2026, 2:56:20 AM|Pull your own bearer token when needed, store it
 :red_circle:|5/22/2026, 2:59:19 AM|Add master playlist in the root
