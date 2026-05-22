@@ -63,7 +63,7 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
                 // Lyrics: sidecar .txt next to the audio file.
                 if (!string.IsNullOrWhiteSpace(song.Lyrics))
                     await File.WriteAllTextAsync(Path.ChangeExtension(filePath, ".txt"),
-                        song.Lyrics, new UTF8Encoding(false), ct);
+                        BuildLyricsText(song), new UTF8Encoding(false), ct);
 
                 EmbedTags(filePath, song, playlist.Name, trackNo, artBytes, progress);
 
@@ -84,6 +84,12 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
 
         WritePlaylistFile(playlist, playlistDir, ordered, progress);
         return result;
+    }
+
+    private static string BuildLyricsText(Song song)
+    {
+        var title = string.IsNullOrWhiteSpace(song.Title) ? "Untitled" : song.Title.Trim();
+        return $"{title}\n\n{song.Lyrics}";
     }
 
     private async Task DownloadFileAsync(string url, string destPath, CancellationToken ct)
