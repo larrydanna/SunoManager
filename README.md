@@ -25,3 +25,4 @@
 :red_circle:|5/22/2026, 2:59:19 AM|Add master playlist in the root
 :red_circle:|5/22/2026, 3:03:15 AM|Add Title to lyrics txt
 :red_circle:|5/22/2026, 3:12:37 AM|CLI Help
+:red_circle:|5/22/2026, 5:12:37 AM|Modify workstation config to NOT start in EVERY client. Save your context.
