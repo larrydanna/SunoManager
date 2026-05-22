@@ -2,6 +2,14 @@
 
 Model Context Protocol (MCP) server for controlling SunoManager from MCP clients over stdio.
 
+## Run
+
+From repository root:
+
+```bash
+dotnet run --project SunoManager.Mcp
+```
+
 ## Host Setup
 
 - Entry point: `Program.cs`
@@ -30,3 +38,9 @@ The `set_token` tool can reload from the shared token file, so CLI and MCP can s
 - `sync_playlist(playlistName)` - sync one named playlist
 - `sync_all()` - sync all playlists
 - `export_to_usb(dryRun=false)` - export local library to USB path
+
+## Recommended Token Workflow
+
+1. Enable `Suno:AllowCredentialCache=true`.
+2. Run `dotnet run --project SunoManager.Cli -- token` to refresh and store token.
+3. Call `set_token()` with no argument to reload the shared token in MCP.

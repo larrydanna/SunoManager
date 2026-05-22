@@ -1,38 +1,49 @@
 # SunoManager
 
-## Project Documentation
+SunoManager syncs your Suno playlists to a local library and can export that library to removable storage.
 
-- [SunoManager.Cli](SunoManager.Cli/README.md) - command-line sync and export workflow
-- [SunoManager.Core](SunoManager.Core/README.md) - shared models and services
-- [SunoManager.Mcp](SunoManager.Mcp/README.md) - MCP server setup and tool interface
+## Projects
 
+- [SunoManager.Cli](SunoManager.Cli/README.md): command-line workflow for token refresh, sync, export, and API debugging
+- [SunoManager.Core](SunoManager.Core/README.md): shared models, configuration, token storage, and sync/export services
+- [SunoManager.Mcp](SunoManager.Mcp/README.md): MCP server exposing SunoManager operations as tools
 
-## Questions
+## Prerequisites
 
-|Q & A||
-|-|-|
-|:red_circle:|Is gstack being used when working on this?|
-|Answer:||
+- .NET SDK 9.0+
+- A valid Suno bearer token
 
-## Links
-[Network Captures for API Discovery](artifacts\network-capture.txt)
+## Quick Start
 
-[Suno API Documentation](https://docs.sunoapi.org/)
+1. Review and update:
+   - `SunoManager.Cli/appsettings.json`
+   - `SunoManager.Mcp/appsettings.json`
+2. (Optional, recommended) Create `appsettings.local.json` in either project for local overrides.
+3. Refresh token via CLI:
+   ```bash
+   dotnet run --project SunoManager.Cli -- token
+   ```
+4. Sync playlists:
+   ```bash
+   dotnet run --project SunoManager.Cli -- sync
+   ```
+5. Export local library:
+   ```bash
+   dotnet run --project SunoManager.Cli -- export
+   ```
+
+## Build and Validation
+
+```bash
+dotnet build SunoManager.sln
+dotnet test SunoManager.sln
+```
 
 ## Credential Cache
 
-Set `Suno:AllowCredentialCache` to `true` in `appsettings.local.json` if you want SunoManager to cache your token locally in a protected store (`%APPDATA%/SunoManager/token.json` on Windows). If disabled (default), SunoManager continues normal flow without cached login.
+Set `Suno:AllowCredentialCache` to `true` to allow token caching in `%APPDATA%/SunoManager/token.json` (secure DPAPI protection on Windows). When disabled (default), tokens are used only for the current run.
 
-## Todo
+## References
 
-|Status|As Of|Task|
-|-|-|-|
-🟩|5/22/2026, 5:13:08 AM|git initialize
-🟩|5/22/2026, 5:13:08 AM|Push to GitHub larrydanna
-🟩|5/22/2026, 2:27:08 AM|Document the MCP interface and all the projects, README.md at each interesting level
-🟩|5/22/2026, 5:13:08 AM|Add secure credential cache, let me store my login locally
-🟩|5/22/2026, 5:13:08 AM|Pull your own bearer token when needed, store it
-🟩|5/22/2026, 5:13:08 AM|Add master playlist in the root
-🟩|5/22/2026, 5:13:08 AM|Add Title to lyrics txt
-🟩|5/22/2026, 5:13:08 AM|CLI Help
-:red_circle:|5/22/2026, 5:12:37 AM|Modify workstation config to NOT start in EVERY client. Save your context.
+- [Network Captures for API Discovery](artifacts/network-capture.txt)
+- [Suno API Documentation](https://docs.sunoapi.org/)
