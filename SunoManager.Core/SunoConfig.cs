@@ -3,7 +3,6 @@ namespace SunoManager.Core;
 public class SunoConfig
 {
     public string AuthToken { get; set; } = "";
-    public bool AllowCredentialCache { get; set; } = false;
     public string DeviceId { get; set; } = "";
     public string Artist { get; set; } = "";
     public string LibraryPath { get; set; } = "";

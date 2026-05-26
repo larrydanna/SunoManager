@@ -11,8 +11,7 @@ Shared library used by both CLI and MCP hosts.
 
 ## Notable Behavior
 
-- `TokenStore` uses `%APPDATA%/SunoManager/token.json` as the shared cache file.
-- Secure token persistence is available on Windows (`ProtectedData` / DPAPI).
+- `TokenStore` uses `%APPDATA%/SunoManager/token.json` as the shared per-user token file (plain JSON; protected by per-user filesystem ACLs).
 - `SunoConfig.IsTokenExpired()` treats near-expiry tokens (<= 2 minutes remaining) as expired.
 
 ## Referenced By

@@ -169,28 +169,42 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
         }
     }
 
-    // Generates (or regenerates) a master .m3u8 in the library root that lists
-    // every downloaded song, sorted by playlist then title.
-    public async Task WriteMasterPlaylistAsync(IProgress<string>? progress = null)
+    // Concatenates every playlist's clips into a single master .m3u8 in the
+    // library root, in the user's curated order (Suno's Position ascending).
+    // Songs that appear in N playlists appear N times -- repeats are how the
+    // listening order is preserved.
+    public async Task WriteMasterPlaylistAsync(IReadOnlyList<Playlist> playlists,
+        IProgress<string>? progress = null)
     {
+        if (playlists.Count == 0) return;
         var man = await manifest.LoadAsync();
         if (man.Songs.Count == 0) return;
 
         var artist = string.IsNullOrWhiteSpace(config.Artist) ? "Suno" : config.Artist;
         var sb = new StringBuilder();
         sb.AppendLine("#EXTM3U");
+        int total = 0;
 
-        foreach (var entry in man.Songs.Values.OrderBy(e => e.Playlist).ThenBy(e => e.Title))
+        foreach (var playlist in playlists)
         {
-            var secs = (int)Math.Round(entry.DurationSeconds ?? 0);
-            var rel = entry.RelativePath.Replace('\\', '/');
-            AppendPlaylistEntry(sb, secs, $"{artist} - {entry.Title}", rel,
-                TryGetCoverPathForEntry(config.LibraryPath, rel));
+            foreach (var entry in playlist.Clips.OrderBy(c => c.Position))
+            {
+                if (entry.Clip is not { } song) continue;
+                if (!man.Songs.TryGetValue(song.Id, out var manEntry)) continue;
+
+                var secs = (int)Math.Round(manEntry.DurationSeconds ?? song.DurationSeconds ?? 0);
+                var rel = manEntry.RelativePath.Replace('\\', '/');
+                AppendPlaylistEntry(sb, secs, $"{artist} - {song.Title}", rel,
+                    TryGetCoverPathForEntry(config.LibraryPath, rel));
+                total++;
+            }
         }
 
         var m3uPath = Path.Combine(config.LibraryPath, "All Songs.m3u8");
-        await File.WriteAllTextAsync(m3uPath, sb.ToString(), new UTF8Encoding(false));
-        progress?.Report($"Master playlist: {Path.GetFileName(m3uPath)} ({man.Songs.Count} tracks)");
+        // UTF-8 *with* BOM: older players (Winamp, some car head units) default
+        // to the system code page without it and mojibake non-ASCII titles.
+        await File.WriteAllTextAsync(m3uPath, sb.ToString(), new UTF8Encoding(true));
+        progress?.Report($"Master playlist: {Path.GetFileName(m3uPath)} ({total} tracks)");
     }
 
     // Generates a .m3u8 listing every song in the playlist, in playlist order.
@@ -213,7 +227,9 @@ public class DownloadService(HttpClient http, SunoApiClient api, ManifestService
         }
 
         var m3uPath = Path.Combine(playlistDir, $"{playlist.SafeName}.m3u8");
-        File.WriteAllText(m3uPath, sb.ToString(), new UTF8Encoding(false));
+        // UTF-8 *with* BOM: older players (Winamp, some car head units) default
+        // to the system code page without it and mojibake non-ASCII titles.
+        File.WriteAllText(m3uPath, sb.ToString(), new UTF8Encoding(true));
         progress?.Report($"  Playlist file: {Path.GetFileName(m3uPath)} ({ordered.Count} tracks)");
     }
 

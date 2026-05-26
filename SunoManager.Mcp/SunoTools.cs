@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.Text.Json;
 using ModelContextProtocol.Server;
 using SunoManager.Core;
+using SunoManager.Core.Models;
 using SunoManager.Core.Services;
 
 namespace SunoManager.Mcp;
@@ -32,7 +33,7 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
         return null;
     }
 
-    [McpServerTool, Description("Activate a fresh Suno auth token for this running server -- no restart needed. Preferred usage: enable Suno:AllowCredentialCache, run 'suno token' in a terminal, then call this with NO argument to reload it from the protected local cache. You may also pass the full 'Bearer eyJ...' value directly.")]
+    [McpServerTool, Description("Activate a fresh Suno auth token for this running server -- no restart needed. Preferred usage: run 'suno token' in a terminal (it writes the shared token.json), then call this with NO argument to reload it from disk. You may also pass the full 'Bearer eyJ...' value directly, but reloading from disk avoids copying a long secret through the model, which can corrupt it.")]
     public string set_token(
         [Description("Optional. The full 'Bearer eyJ...' value. If omitted, and credential cache is enabled, the token is reloaded from the local protected cache.")]
         string? token = null)
@@ -40,12 +41,10 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
         var fromDisk = string.IsNullOrWhiteSpace(token);
         if (fromDisk)
         {
-            if (!config.AllowCredentialCache)
-                return "Credential cache is disabled (Suno:AllowCredentialCache=false). "
-                     + "Pass a token directly or enable secure cache in appsettings.local.json.";
             token = TokenStore.TryRead();
             if (string.IsNullOrWhiteSpace(token))
-                return $"No token supplied and no stored token found at {TokenStore.FilePath}.";
+                return $"No token supplied and none found at {TokenStore.FilePath}. "
+                     + "Run 'suno token' in a terminal first, then call set_token again.";
         }
 
         token = token!.Trim();
@@ -57,16 +56,12 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
             ? token : "Bearer " + token;
 
         config.AuthToken = normalized;   // live singleton -- every service sees it immediately
-        if (config.AllowCredentialCache && TokenStore.IsSecureCacheAvailable())
-            TokenStore.Save(normalized); // persist to token.json for the CLI and other hosts
+        TokenStore.Save(normalized);     // persist to token.json for the CLI and other hosts
 
         var mins = (int)(expiry - DateTimeOffset.UtcNow).TotalMinutes;
         var src = fromDisk ? "reloaded from token.json" : "accepted";
-        var cacheState = config.AllowCredentialCache && TokenStore.IsSecureCacheAvailable()
-            ? " Cache updated."
-            : " Cache unchanged.";
         return $"Token {src} and active. Valid until {expiry.LocalDateTime:ddd MMM d, h:mm tt} "
-             + $"(about {mins} minutes from now).{cacheState}";
+             + $"(about {mins} minutes from now).";
     }
 
     [McpServerTool, Description("List all Suno playlists with name, ID, and song count.")]
@@ -145,7 +140,8 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
         var progress = new Progress<string>(m => messages.Add(m));
         var result = await downloader.SyncPlaylistAsync(playlist, progress);
 
-        await downloader.WriteMasterPlaylistAsync(progress);
+        // Master playlist is only refreshed by sync_all -- a single-playlist
+        // run would clobber the order of every other playlist.
         messages.Add($"Done -- {result.Downloaded} downloaded, {result.Skipped} skipped, {result.Failed} failed");
         return string.Join("\n", messages);
     }
@@ -160,6 +156,7 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
         if (summaries.Count == 0) return "No playlists found.";
 
         var lines = new List<string>();
+        var fetched = new List<Playlist>();
         foreach (var summary in summaries)
         {
             lines.Add($"Syncing: {summary.Name} ({summary.DisplayCount} songs)");
@@ -168,9 +165,10 @@ public class SunoTools(SunoApiClient api, DownloadService downloader,
             var progress = new Progress<string>(m => lines.Add(m));
             var result = await downloader.SyncPlaylistAsync(playlist, progress);
             lines.Add($"  => {result.Downloaded} downloaded, {result.Skipped} skipped, {result.Failed} failed");
+            fetched.Add(playlist);
         }
 
-        await downloader.WriteMasterPlaylistAsync(new Progress<string>(m => lines.Add(m)));
+        await downloader.WriteMasterPlaylistAsync(fetched, new Progress<string>(m => lines.Add(m)));
         return string.Join("\n", lines);
     }
 

@@ -1,22 +1,18 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SunoManager.Core;
+using SunoManager.Core.Models;
 using SunoManager.Core.Services;
 
 var config = new ConfigurationBuilder()
     .SetBasePath(AppContext.BaseDirectory)
     .AddJsonFile("appsettings.json", optional: false)
     .AddJsonFile("appsettings.local.json", optional: true)
+    .AddJsonFile(TokenStore.FilePath, optional: true)  // shared token file, highest priority
     .Build();
 
 var sunoConfig = config.GetSection("Suno").Get<SunoConfig>()
     ?? throw new InvalidOperationException("Missing [Suno] section in appsettings.json");
-if (sunoConfig.AllowCredentialCache)
-{
-    var cachedToken = TokenStore.TryRead();
-    if (!string.IsNullOrWhiteSpace(cachedToken))
-        sunoConfig.AuthToken = cachedToken;
-}
 
 var services = new ServiceCollection();
 services.AddSingleton(sunoConfig);
@@ -84,6 +80,7 @@ static async Task RunSync(string[] args, IServiceProvider sp, SunoConfig config)
         return;
     }
 
+    var fetched = new List<Playlist>();
     foreach (var summary in playlists)
     {
         Console.WriteLine($"\nPlaylist: {summary.Name} ({summary.DisplayCount} songs) — fetching clips...");
@@ -92,9 +89,13 @@ static async Task RunSync(string[] args, IServiceProvider sp, SunoConfig config)
 
         var result = await downloader.SyncPlaylistAsync(playlist, progress);
         Console.WriteLine($"  Done -- {result.Downloaded} downloaded, {result.Skipped} skipped, {result.Failed} failed");
+        fetched.Add(playlist);
     }
 
-    await downloader.WriteMasterPlaylistAsync(progress);
+    // Master playlist only makes sense for a full sync -- a single-playlist run
+    // would clobber every other playlist's contribution to the master.
+    if (targetPlaylist is null)
+        await downloader.WriteMasterPlaylistAsync(fetched, progress);
 }
 
 static void RunExport(string[] args, IServiceProvider sp, SunoConfig config)
@@ -153,21 +154,11 @@ static void RefreshToken(SunoConfig config)
         return;
     }
 
-    if (config.AllowCredentialCache && TokenStore.IsSecureCacheAvailable())
-    {
-        TokenStore.Save(input);
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"Token saved. Valid until {expiry.LocalDateTime:ddd MMM d, h:mm tt} (about {(int)(expiry - DateTimeOffset.UtcNow).TotalMinutes} minutes from now).");
-        Console.ResetColor();
-        Console.WriteLine($"Stored at: {TokenStore.FilePath}");
-    }
-    else
-    {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"Token validated. Valid until {expiry.LocalDateTime:ddd MMM d, h:mm tt}.");
-        Console.WriteLine("Secure credential cache is disabled or unavailable, so the token was not stored.");
-        Console.ResetColor();
-    }
+    TokenStore.Save(input);
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"Token saved. Valid until {expiry.LocalDateTime:ddd MMM d, h:mm tt} (about {(int)(expiry - DateTimeOffset.UtcNow).TotalMinutes} minutes from now).");
+    Console.ResetColor();
+    Console.WriteLine($"Stored at: {TokenStore.FilePath}");
     Console.WriteLine();
     Console.WriteLine("You can now run:  suno sync");
 }
@@ -210,7 +201,7 @@ static void ShowHelp()
 
         TOKEN
           Tokens expire every ~60 minutes. Run 'suno token' whenever sync says it's expired.
-          Set Suno:AllowCredentialCache=true to store a protected token at: %APPDATA%\SunoManager\token.json
+          Token is stored at: %APPDATA%\SunoManager\token.json  (shared with MCP server)
 
         CONFIG
           appsettings.json            Main config (LibraryPath, UsbPath, etc.)
