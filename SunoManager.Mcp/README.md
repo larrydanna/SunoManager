@@ -41,6 +41,5 @@ The `set_token` tool can reload from the shared token file, so CLI and MCP can s
 
 ## Recommended Token Workflow
 
-1. Enable `Suno:AllowCredentialCache=true`.
-2. Run `dotnet run --project SunoManager.Cli -- token` to refresh and store token.
-3. Call `set_token()` with no argument to reload the shared token in MCP.
+1. Run `dotnet run --project SunoManager.Cli -- token` to refresh and store the token in the shared `%APPDATA%/SunoManager/token.json`.
+2. Call `set_token()` with no argument to have the MCP reload the latest token from disk.

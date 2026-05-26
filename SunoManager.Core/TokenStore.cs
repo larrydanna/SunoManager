@@ -1,37 +1,24 @@
 using System.Text.Json;
-using System.Text;
-using System.Security.Cryptography;
 
 namespace SunoManager.Core;
 
 public static class TokenStore
 {
-    private const string TokenEntropy = "SunoManager.TokenStore.v1";
-
     public static string FilePath { get; } = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "SunoManager", "token.json");
 
+    // Writes the token to the shared token.json file. Plain JSON on purpose --
+    // the file lives under the per-user %APPDATA% so OS ACLs already protect it,
+    // and a single readable format keeps the CLI / MCP / any other host in sync.
     public static void Save(string bearerToken)
     {
-        if (!OperatingSystem.IsWindows()) return;
-
         Directory.CreateDirectory(Path.GetDirectoryName(FilePath)!);
         var normalized = bearerToken.StartsWith("Bearer ") ? bearerToken : "Bearer " + bearerToken;
-        var encryptedBytes = ProtectedData.Protect(
-            Encoding.UTF8.GetBytes(normalized),
-            Encoding.UTF8.GetBytes(TokenEntropy),
-            DataProtectionScope.CurrentUser);
-
         var json = JsonSerializer.Serialize(new
         {
-            Suno = new
-            {
-                AuthTokenProtected = Convert.ToBase64String(encryptedBytes),
-                Protection = "CurrentUserDpapi"
-            }
+            Suno = new { AuthToken = normalized }
         }, new JsonSerializerOptions { WriteIndented = true });
-
         File.WriteAllText(FilePath, json);
     }
 
@@ -45,29 +32,12 @@ public static class TokenStore
             if (!File.Exists(FilePath)) return null;
             using var doc = JsonDocument.Parse(File.ReadAllText(FilePath));
             if (doc.RootElement.TryGetProperty("Suno", out var suno)
-                && suno.TryGetProperty("AuthTokenProtected", out var protectedToken))
-            {
-                var protectedValue = protectedToken.GetString();
-                if (string.IsNullOrWhiteSpace(protectedValue)) return null;
-                if (!OperatingSystem.IsWindows()) return null;
-
-                var decrypted = ProtectedData.Unprotect(
-                    Convert.FromBase64String(protectedValue),
-                    Encoding.UTF8.GetBytes(TokenEntropy),
-                    DataProtectionScope.CurrentUser);
-                return Encoding.UTF8.GetString(decrypted);
-            }
-
-            // Backward compatibility with older plain-text cache.
-            if (doc.RootElement.TryGetProperty("Suno", out suno)
-                && suno.TryGetProperty("AuthToken", out var legacyToken))
-                return legacyToken.GetString();
+                && suno.TryGetProperty("AuthToken", out var token))
+                return token.GetString();
         }
         catch { /* unreadable or malformed — treat as absent */ }
         return null;
     }
-
-    public static bool IsSecureCacheAvailable() => OperatingSystem.IsWindows();
 
     public static (bool valid, DateTimeOffset expiry, string error) Validate(string rawToken)
     {

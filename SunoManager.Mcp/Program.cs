@@ -11,16 +11,11 @@ var builder = Host.CreateApplicationBuilder(args);
 builder.Configuration
     .SetBasePath(AppContext.BaseDirectory)
     .AddJsonFile("appsettings.json", optional: false)
-    .AddJsonFile("appsettings.local.json", optional: true);
+    .AddJsonFile("appsettings.local.json", optional: true)
+    .AddJsonFile(TokenStore.FilePath, optional: true);  // shared token file, highest priority
 
 var sunoConfig = builder.Configuration.GetSection("Suno").Get<SunoConfig>()
     ?? new SunoConfig();
-if (sunoConfig.AllowCredentialCache)
-{
-    var cachedToken = TokenStore.TryRead();
-    if (!string.IsNullOrWhiteSpace(cachedToken))
-        sunoConfig.AuthToken = cachedToken;
-}
 
 builder.Services.AddSingleton(sunoConfig);
 builder.Services.AddHttpClient<SunoApiClient>();

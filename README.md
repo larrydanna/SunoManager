@@ -39,9 +39,9 @@ dotnet build SunoManager.sln
 dotnet test SunoManager.sln
 ```
 
-## Credential Cache
+## Token Storage
 
-Set `Suno:AllowCredentialCache` to `true` to allow token caching in `%APPDATA%/SunoManager/token.json` (secure DPAPI protection on Windows). When disabled (default), tokens are used only for the current run.
+The CLI's `token` command writes the bearer token to a per-user file at `%APPDATA%/SunoManager/token.json` (plain JSON). Both the CLI and the MCP server read from this shared location, so a single `suno token` refresh covers every host. The file is protected by Windows per-user ACLs; treat it as you would any other credential file.
 
 ## References
 
